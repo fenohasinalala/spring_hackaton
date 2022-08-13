@@ -5,4 +5,4 @@
 </p>
 
 ## Candidates Subscription API
-[Candidates API](https://raw.githubusercontent.com/fenohasinalala/spring_hackaton/dev/candidateAPI.yaml)
+[Candidates API](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/fenohasinalala/spring_hackaton/dev/candidateAPI.yaml)
