@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
@@ -23,4 +24,19 @@ public class Candidate implements Serializable {
 
     @Column(length = 100)
     private String lastName;
+
+    @Column(length = 100)
+    private String email;
+
+    @Column
+    private String telephone;
+
+    @Column
+    private char serie;
+
+    @Column
+    private char sexe;
+
+    @Column
+    private LocalDate birthDate;
 }

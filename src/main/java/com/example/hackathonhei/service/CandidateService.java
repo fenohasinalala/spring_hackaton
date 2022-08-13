@@ -28,7 +28,7 @@ public class CandidateService {
 
     public String deleteById(Long id){
         repository.deleteById(id);
-        return "Resource deleted succesfully";
+        return "Candidate deleted succesfully";
     }
 
     public String updateFirstName(Long id, String newFirstName){

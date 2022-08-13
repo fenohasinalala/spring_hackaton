@@ -17,12 +17,12 @@ public class CandidateController {
         return "Hello world";
     }
 
-    @GetMapping("/students")
+    @GetMapping("/candidates")
     public List<Candidate> getAllCandidates(){
         return candidateService.getAllCandidates();
     }
 
-    @GetMapping("/students/search")
+    @GetMapping("/candidates/search")
     public List<Candidate> findCandidateByFullName(
             @RequestParam(name = "firstName") String firstName,
             @RequestParam(name = "lastName") String lastName)
@@ -30,12 +30,12 @@ public class CandidateController {
         return candidateService.searchCandidateByFullName(firstName,lastName);
     }
 
-    @PostMapping("/students")
+    @PostMapping("/candidates")
     public String insertStudent(@RequestBody Candidate candidate){
         return candidateService.insertCandidate(candidate);
     }
 
-    @PatchMapping("/students")
+    @PatchMapping("/candidates")
     public String updateCandidate(
             @RequestParam(name = "id") Long id,
             @RequestParam(name = "newFirstName") String newFirstName)
@@ -43,7 +43,7 @@ public class CandidateController {
         return candidateService.updateFirstName(id,newFirstName);
     }
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/candidates/{id}")
     public void delete(@PathVariable Long id){
         candidateService.deleteById(id);
     }

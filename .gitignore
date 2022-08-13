@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Properties not compatible ###
+src/main/resources/application.properties
