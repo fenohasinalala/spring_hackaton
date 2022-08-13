@@ -34,16 +34,10 @@ paths:
     get:
       tags:
       - Candidates
-      summary: Get a list of Candidates
+      summary: Get a list of Candidate
       operationId: getCandidate
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-          format: int64
-      - name: page_size
+      - name: id
         in: query
         required: false
         schema:
@@ -84,46 +78,6 @@ paths:
               schema:
                   $ref: '#/components/schemas/Candidates'
   /candidates/{id}:
-    get:
-      tags:
-      - Candidates
-      summary: Get a Candidate
-      operationId: getCandidateid
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Candidates'
-        400:
-          description: Bad request
-    delete:
-      tags:
-      - Candidates
-      summary: Delete a Candidate by ID
-      operationId: deleteCandidateid
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          maximum: 10.0
-          minimum: 1.0
-          type: integer
-          format: int64
-      responses:
-        200:
-          description: sucsses
-        400:
-          description: Bad request
     put:
       tags:
       - Candidates
@@ -219,15 +173,7 @@ paths:
       summary: Get a list of candidateGrade
       operationId: getgrade
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          maximum: 10.0
-          minimum: 1.0
-          type: integer
-          format: int64
-      - name: page_size
+      - name: id
         in: query
         required: false
         schema:
@@ -247,27 +193,6 @@ paths:
         400:
           description: Bad request
   /candidateGrade/{id}:
-    get:
-      tags:
-      - Grade
-      summary: Get a grade
-      operationId: getgradeid
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/grade'
-        400:
-          description: Bad request
     delete:
       tags:
       - Grade
