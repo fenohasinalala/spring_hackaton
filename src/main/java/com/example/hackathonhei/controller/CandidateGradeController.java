@@ -12,16 +12,19 @@ import java.util.List;
 public class CandidateGradeController {
     private CandidateGradeService candidateGradeService;
 
+    @CrossOrigin
     @GetMapping("/candidateGrade")
     public List<CandidateGrade> getAllCandidateGrade(){
         return candidateGradeService.getAllCandidateGrade();
     };
 
+    @CrossOrigin
     @PostMapping("/candidateGrade")
     public String insertCandidateGrade(@RequestBody CandidateGrade candidateGrade){
         return candidateGradeService.insertCandidateGrade(candidateGrade);
     }
 
+    @CrossOrigin
     @PatchMapping("/candidateGrade")
     public String updateCandidateGrade(
             @RequestParam(name = "id") Long id,
@@ -30,6 +33,7 @@ public class CandidateGradeController {
         return candidateGradeService.updateCandidateGrade(id, newGrade);
     }
 
+    @CrossOrigin
     @DeleteMapping("/candidateGrade/{id}")
     public void deleteCandidateGrade(@PathVariable Long id){
         candidateGradeService.deleteById(id);
