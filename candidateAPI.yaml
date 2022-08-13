@@ -3,7 +3,7 @@ info:
   title: HEI Subscription
   version: 1.0.0
   description: This is an api that help you generate the list of the candidates
-    for the HEI Subscritpion.
+    for the HEI Subscritpion!
 servers:
 - url: https://hackaton-test-bd.herokuapp.com
 paths:
