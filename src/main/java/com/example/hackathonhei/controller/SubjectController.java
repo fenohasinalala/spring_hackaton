@@ -14,11 +14,13 @@ public class SubjectController {
 
     private SubjectService subjectService;
 
+    @CrossOrigin
     @GetMapping("/subject")
     public List<Subject> getAllSubject(){
         return subjectService.getAllSubject();
     }
 
+    @CrossOrigin
     @GetMapping("/subject/search")
     public Optional<Subject> getSubjectBySubjectName(
             @RequestParam(name = "id")Long id
@@ -26,11 +28,13 @@ public class SubjectController {
         return subjectService.getSubjectById(id);
     }
 
+    @CrossOrigin
     @PostMapping("/subject")
     public String insertSubject(@RequestBody Subject subject){
         return subjectService.insertSubject(subject);
     }
 
+    @CrossOrigin
     @DeleteMapping("/subject/{id}")
     public String deleteSubject (@PathVariable Long id){
         return subjectService.deleteById(id);

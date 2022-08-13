@@ -13,6 +13,7 @@ import java.util.List;
 public class TestController {
     private TestService testService;
 
+
     @GetMapping("/test")
     public List<Test> getAllTest(){
         return testService.getAllTest();

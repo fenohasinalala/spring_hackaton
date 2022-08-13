@@ -13,11 +13,13 @@ import java.util.Optional;
 public class BacGradeController {
     private BacGradeService bacGradeService;
 
+    @CrossOrigin
     @GetMapping("/bac_grade")
     public List<BacGrade>  getAllBacGrade(){
         return bacGradeService.getAllBacGrade();
     }
 
+    @CrossOrigin
     @GetMapping("/bac_grade/search")
     public Optional<BacGrade> getBacGradeById(
             @RequestParam(name = "id")Long id
@@ -25,11 +27,13 @@ public class BacGradeController {
         return bacGradeService.getBacGradeById(id);
     }
 
+    @CrossOrigin
     @PostMapping("/bac_grade")
     public String insertBacGrade(@RequestBody BacGrade bacGrade){
         return bacGradeService.insertBacGrade(bacGrade);
     }
 
+    @CrossOrigin
     @DeleteMapping("/bac_grade/{id}")
     public String deleteBacGrade(@PathVariable Long id){
         return bacGradeService.deleteById(id);

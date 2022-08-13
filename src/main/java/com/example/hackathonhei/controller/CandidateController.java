@@ -12,16 +12,19 @@ import java.util.List;
 public class CandidateController {
     private CandidateService candidateService;
 
+    @CrossOrigin
     @GetMapping("/")
     public String hello(){
         return "Hello world";
     }
 
+    @CrossOrigin
     @GetMapping("/candidates")
     public List<Candidate> getAllCandidates(){
         return candidateService.getAllCandidates();
     }
 
+    @CrossOrigin
     @GetMapping("/candidates/search")
     public List<Candidate> findCandidateByFullName(
             @RequestParam(name = "firstName") String firstName,
@@ -30,11 +33,13 @@ public class CandidateController {
         return candidateService.searchCandidateByFullName(firstName,lastName);
     }
 
+    @CrossOrigin
     @PostMapping("/candidates")
     public String insertStudent(@RequestBody Candidate candidate){
         return candidateService.insertCandidate(candidate);
     }
 
+    @CrossOrigin
     @PatchMapping("/candidates")
     public String updateCandidate(
             @RequestParam(name = "id") Long id,
@@ -43,6 +48,7 @@ public class CandidateController {
         return candidateService.updateFirstName(id,newFirstName);
     }
 
+    @CrossOrigin
     @DeleteMapping("/candidates/{id}")
     public void delete(@PathVariable Long id){
         candidateService.deleteById(id);

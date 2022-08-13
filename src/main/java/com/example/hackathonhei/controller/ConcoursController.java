@@ -13,16 +13,19 @@ public class ConcoursController {
 
     private ConcoursService concoursService;
 
+    @CrossOrigin
     @GetMapping("/concours")
     public List<Concours> getAllConcours(){
         return concoursService.getAllConcours();
     };
 
+    @CrossOrigin
     @PostMapping("/concours")
     public String insertConcours(@RequestBody Concours concours){
         return concoursService.insertConcours(concours);
     }
 
+    @CrossOrigin
     @PatchMapping("/concours")
     public String updateConcours(
             @RequestParam(name = "id") Long id,
@@ -31,6 +34,7 @@ public class ConcoursController {
         return concoursService.updateConcours(id, newSession);
     }
 
+    @CrossOrigin
     @DeleteMapping("/concours/{id}")
     public void deleteConcours(@PathVariable Long id){
         concoursService.deleteById(id);
