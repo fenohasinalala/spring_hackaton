@@ -1,30 +1,29 @@
 package com.example.hackathonhei.model;
 
+//import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Test implements Serializable {
+public class CandidateGrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTest;
+    private Long idCandidateGrade;
+
+    @OneToOne
+    private Candidate candidate;
+
+    @OneToOne
+    private Test test;
 
     @Column
-    private LocalDate testDate;
-
-    @OneToOne
-    private Concours concours;
-
-    @OneToOne
-    private Subject subject;
+    private Float grade;
 }

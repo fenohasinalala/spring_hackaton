@@ -1,0 +1,453 @@
+openapi: 3.0.0
+info:
+  title: HEI Subscription
+  version: 1.0.0
+  description: This is an api that help you generate the list of the candidates
+    for the HEI Subscritpion!!
+servers:
+- url: https://hackaton-test-bd.herokuapp.com
+paths:
+  /candidates:
+    post:
+      tags:
+      - Candidates
+      summary: Add a new candidate
+      operationId: addCandidate
+      requestBody:
+        description: Candidate object that needs to be added
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateCandidate'
+        required: true
+      responses:
+        200:
+          description: Candidate added
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidates'
+        400:
+          description: Bad request
+    get:
+      tags:
+      - Candidates
+      summary: Get a list of Candidate
+      operationId: getCandidate
+      parameters:
+      - name: id
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidates'
+        400:
+          description: Bad request
+    delete:
+      tags:
+      - Candidates
+      summary: Delete some Candidates
+      operationId: deleteCandidates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object 
+                properties:
+                  id:
+                    type: integer
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Candidates'
+  /candidates/{id}:
+    put:
+      tags:
+      - Candidates
+      summary: Change Candidate by ID
+      description: Multiple status values can be provided with comma separated strings
+      operationId: putCandidateID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCandidate'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Candidates'
+        400:
+          description: Bad request
+    patch:
+      tags:
+      - Candidates
+      summary: Change some details of Candidate by ID
+      description: "Possible changes on : name & group"
+      operationId: pathCandidateID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCandidate'
+            examples:
+              changeName:
+                summary: Change name
+                value:
+                  name : 'New name'
+              changeGroup:
+                summary: Change group
+                value:
+                  group : 'G1'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/CreateCandidate'
+        400:
+          description: Bad request
+  /candidateGrade:
+    post:
+      tags:
+      - Grade
+      summary: Add a new grade
+      operationId: addgrade
+      requestBody:
+        description: grade object that needs to be added
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateGrade'
+        required: true
+      responses:
+        200:
+          description: grade added
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/grade'
+        400:
+          description: Bad request
+    get:
+      tags:
+      - Grade
+      summary: Get a list of candidateGrade
+      operationId: getgrade
+      parameters:
+      - name: id
+        in: query
+        required: false
+        schema:
+          maximum: 10.0
+          minimum: 1.0
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/grade'
+        400:
+          description: Bad request
+  /candidateGrade/{id}:
+    delete:
+      tags:
+      - Grade
+      summary: Delete a grade by ID
+      operationId: deletegradeid
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200: 
+          description: Successfully deleted
+          content: {}
+        400:
+          description: Bad request
+    put:
+      tags:
+      - Grade
+      summary: Change grade by ID
+      description: Multiple status values can be provided with comma separated strings
+      operationId: putgradeID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          maximum: 10.0
+          minimum: 1.0
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreateGrade'
+        400:
+          description: Bad request
+  /Subject:
+    get:
+      tags:
+      - Subject
+      summary: Get a list of Subject
+      operationId: getSubject
+      parameters:
+      - name: id
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+        400:
+          description: Bad request
+
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+  /Subject/{id}:
+    delete:
+      tags:
+      - Subject
+      summary: Delete a Subject by ID
+      operationId: deletegroupeid
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Successfully deleted
+          content: {}
+        400:
+          description: Bad request
+    put:
+      tags:
+      - Subject
+      summary: Change groupe by ID
+      description: Multiple status values can be provided with comma separated strings
+      operationId: putgroupeID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        400:
+          description: Bad request
+components:
+  schemas:
+    CreateCandidate:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Jermaine
+        lastName:
+          type: string
+          example: Kerluke
+        email:
+          type: string
+          example: Jermaine@gmail.com
+        telephone:
+          type: string
+          example: 0332587965
+        serie:
+          type: string
+          example: C
+        sexe:
+          type: string
+          example: M
+    CreateGrade:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Base de données
+        teacher:
+          type: string
+          example: Tokimahery Ramarozaka
+        createdtime:
+          type: string
+          format: -time
+    grade:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          example: Base de données
+        teacher:
+          type: string
+          example: Tokimahery Ramarozaka
+        createdtime:
+          type: string
+          format: -time
+    Candidates:
+      type: object
+      properties:
+        idCandidate:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: Jermaine
+        lastName:
+          type: string
+          example: Kerluke
+        email:
+          type: string
+          example: Jermaine_Kerluke@gmail.com
+        id:
+          type: integer
+          format: int64
+    CreateGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          example: G3
+        group:
+          type: string
+          example: goupe G3
+    Group:
+      type: object
+      properties:
+        name:
+          type: string
+          example: G3
+        group:
+          type: string
+          example: goupe G3
+        id:
+          type: integer
+          format: int64
+    error400:
+      required:
+      - type
+      - message
+      type: object
+      properties:
+        type:
+          type: string
+          example: BadRequestException
+        group:
+          type: string
+          example: Bad request
+    error403:
+      required:
+      - type
+      - message
+      type: object
+      properties:
+        type:
+          type: string
+          example: NotAuthorizedException
+        group:
+          type: string
+          example: Not authorized
+    error404:
+      required:
+      - type
+      - message
+      type: object
+      properties:
+        type:
+          type: string
+          example: ResourceNotFoundException
+        group:
+          type: string
+          example: Resource is not found
+    error500:
+      required:
+      - type
+      - message
+      type: object
+      properties:
+        type:
+          type: string
+          example: InternalServerException
+        group:
+          type: string
+          example: Unexpected error

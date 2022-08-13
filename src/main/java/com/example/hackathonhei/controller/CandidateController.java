@@ -12,17 +12,20 @@ import java.util.List;
 public class CandidateController {
     private CandidateService candidateService;
 
+    @CrossOrigin
     @GetMapping("/")
     public String hello(){
         return "Hello world";
     }
 
-    @GetMapping("/students")
+    @CrossOrigin
+    @GetMapping("/candidates")
     public List<Candidate> getAllCandidates(){
         return candidateService.getAllCandidates();
     }
 
-    @GetMapping("/students/search")
+    @CrossOrigin
+    @GetMapping("/candidates/search")
     public List<Candidate> findCandidateByFullName(
             @RequestParam(name = "firstName") String firstName,
             @RequestParam(name = "lastName") String lastName)
@@ -30,12 +33,14 @@ public class CandidateController {
         return candidateService.searchCandidateByFullName(firstName,lastName);
     }
 
-    @PostMapping("/students")
+    @CrossOrigin
+    @PostMapping("/candidates")
     public String insertStudent(@RequestBody Candidate candidate){
         return candidateService.insertCandidate(candidate);
     }
 
-    @PatchMapping("/students")
+    @CrossOrigin
+    @PatchMapping("/candidates")
     public String updateCandidate(
             @RequestParam(name = "id") Long id,
             @RequestParam(name = "newFirstName") String newFirstName)
@@ -43,7 +48,8 @@ public class CandidateController {
         return candidateService.updateFirstName(id,newFirstName);
     }
 
-    @DeleteMapping("/students/{id}")
+    @CrossOrigin
+    @DeleteMapping("/candidates/{id}")
     public void delete(@PathVariable Long id){
         candidateService.deleteById(id);
     }

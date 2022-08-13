@@ -6,25 +6,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Test implements Serializable {
+public class BacGrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTest;
-
-    @Column
-    private LocalDate testDate;
+    private Long idBacGrade;
 
     @OneToOne
-    private Concours concours;
+    private Candidate candidate;
 
     @OneToOne
     private Subject subject;
+    
+    @Column
+    private float grade;
 }

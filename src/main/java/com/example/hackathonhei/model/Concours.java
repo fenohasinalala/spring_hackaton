@@ -7,24 +7,26 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class Test implements Serializable {
+@NoArgsConstructor
+public class Concours implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTest;
+    private Long idConcours;
+
+    @Column(length = 100)
+    private String session;
 
     @Column
-    private LocalDate testDate;
+    private Float minAdmission;
 
-    @OneToOne
-    private Concours concours;
+    @Column
+    private Float minListeAttente;
 
-    @OneToOne
-    private Subject subject;
+    @Column
+    private Float minMath;
 }
