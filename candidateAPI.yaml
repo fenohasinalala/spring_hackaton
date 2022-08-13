@@ -237,20 +237,14 @@ paths:
                   $ref: '#/components/schemas/CreateGrade'
         400:
           description: Bad request
-  /groups:
+  /Subject:
     get:
       tags:
       - Subject
       summary: Get a list of Subject
       operationId: getSubject
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-          format: int64
-      - name: page_size
+      - name: id
         in: query
         required: false
         schema:
@@ -273,28 +267,7 @@ paths:
         - write:pets
         - read:pets
       x-codegen-request-body-name: body
-  /groups/{id}:
-    get:
-      tags:
-      - Subject
-      summary: Get a Subject
-      operationId: getgroupeid
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Group'
-        400:
-          description: Bad request
+  /Subject/{id}:
     delete:
       tags:
       - Subject
