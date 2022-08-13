@@ -344,9 +344,9 @@ components:
         name:
           type: string
           example: Base de données
-        teacher:
+        grade:
           type: string
-          example: Tokimahery Ramarozaka
+          example: dataeeedddd
         createdtime:
           type: string
           format: -time
@@ -355,12 +355,12 @@ components:
       properties:
         id:
           type: integer
-        name:
+        subject:
           type: string
-          example: Base de données
-        teacher:
-          type: string
-          example: Tokimahery Ramarozaka
+          example: Math
+        grade:
+          type: integer
+          example: 12
         createdtime:
           type: string
           format: -time
