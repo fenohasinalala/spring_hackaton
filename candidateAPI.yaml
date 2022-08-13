@@ -315,9 +315,9 @@ paths:
   /groups:
     get:
       tags:
-      - Groups
-      summary: Get a list of groups
-      operationId: getgroupe
+      - Subject
+      summary: Get a list of Subject
+      operationId: getSubject
       parameters:
       - name: page
         in: query
@@ -351,8 +351,8 @@ paths:
   /groups/{id}:
     get:
       tags:
-      - Groups
-      summary: Get a groupe
+      - Subject
+      summary: Get a Subject
       operationId: getgroupeid
       parameters:
       - name: id
@@ -372,8 +372,8 @@ paths:
           description: Bad request
     delete:
       tags:
-      - Groups
-      summary: Delete a group by ID
+      - Subject
+      summary: Delete a Subject by ID
       operationId: deletegroupeid
       parameters:
       - name: id
@@ -390,7 +390,7 @@ paths:
           description: Bad request
     put:
       tags:
-      - Groups
+      - Subject
       summary: Change groupe by ID
       description: Multiple status values can be provided with comma separated strings
       operationId: putgroupeID
@@ -420,12 +420,24 @@ components:
     CreateCandidate:
       type: object
       properties:
-        name:
+        firstName:
           type: string
-          example: herilala
-        group:
+          example: Jermaine
+        lastName:
           type: string
-          example: G3
+          example: Kerluke
+        email:
+          type: string
+          example: Jermaine@gmail.com
+        telephone:
+          type: string
+          example: 0332587965
+        serie:
+          type: string
+          example: C
+        sexe:
+          type: string
+          example: M
     CreateGrade:
       type: object
       properties:
@@ -455,12 +467,18 @@ components:
     Candidates:
       type: object
       properties:
-        name:
+        idCandidate:
+          type: integer
+          example: 1
+        firstName:
           type: string
-          example: herilala
-        group:
+          example: Jermaine
+        lastName:
           type: string
-          example: G3
+          example: Kerluke
+        email:
+          type: string
+          example: Jermaine_Kerluke@gmail.com
         id:
           type: integer
           format: int64
